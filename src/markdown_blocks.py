@@ -135,7 +135,8 @@ def generate_page(from_path, template_path, dest_path,basepath):
     html_node = markdown_to_html_node(markdown_content)
     content_html = html_node.to_html()
     title = extract_title(markdown_content)
-
+    template = template.replace("{{ Title }}", title)
+    template = template.replace("{{ Content }}", content_html)
     template = template.replace('href="/', f'href="{basepath}')
     template = template.replace('src="/', f'src="{basepath}')
 
